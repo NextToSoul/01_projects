@@ -1,0 +1,41 @@
+﻿__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project-specific build artifacts
+*.spec
+
+# Test reports / generated output
+*.html
+*.docx
+!src/report/templates/
+
+# SQLite databases
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# Runtime config overrides
+config/local.yaml
