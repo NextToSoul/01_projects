@@ -39,3 +39,5 @@ Thumbs.db
 
 # Runtime config overrides
 config/local.yaml
+# Tools / binaries (keep git-sync.ps1, ignore gh.exe)
+tools/gh.exe
