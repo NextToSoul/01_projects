@@ -279,8 +279,8 @@ products:
 字节 0~1:  帧头标识符      EB 90 (固定)
 字节 2~3:  版本号(3bit) + 类型(1bit) + 副导头(1bit) + APID(11bit)
                            = 0x0520 (固定)
-字节 4~5:  分组标志(2bit) + 源包序列计数(14bit)
-字节 6~7:  数据域长度 (含校验)
+字节 4~5:  分组标志(2bit) + 源包序列计数(14bit)  分组标志固定 0b11 (standalone)
+字节 6~7:  数据域长度 (16-bit word，不含校验和)
 字节 8~9:  指令码 (如 0x005A = TM1请求)
 字节 10~N: 数据域 (依指令码而定)
 字节 N~N+1: 校验和 (从字节2到字节N累加取反取低16bit)
@@ -443,6 +443,11 @@ teardown:
 
 ## 9. 实现里程碑 (4 个阶段)
 
+> ✅ M1 通信+协议编解码 — 已完成
+> ✅ M2 人机交互界面 — 已完成
+> ❌ M3 测试引擎+用例执行 — 未开始
+> ❌ M4 数据存储+报告生成 — 未开始
+
 ### M1 — 通信 + 协议编解码
 
 | 文件 | 内容 |
@@ -459,20 +464,28 @@ teardown:
 | protocol_defs/nebula_ppcu/*.yaml | 5 个 YAML 定义文件 |
 | main.py | 入口 + 初始化流程 |
 | tests/test_protocol.py | 单元测试 |
+| tests/test_comms.py | TCP 回显集成测试 |
 
 **交付**: 可连通讯盒、发遥测请求、解析应答、还原工程量。
 
-### M2 — 遥测面板 + 实时显示
+**帧格式说明**: CCSDS 分组标志固定 0x03 (standalone packet)，位于源包序列字段高 2 位。
+长度字段以 16-bit word 为单位（不含校验和），即数据域字节数 ÷ 2。
 
+
+### M2 — 遥测面板 + 实时显示
+### M2 — 人机交互界面
 | 文件 | 内容 |
 |---|---|
-| src/ui/main_window.py | 标签页主窗口 |
+| src/ui/main_window.py | 统一单页布局 (QSplitter), 连接/指令/遥测同屏显示 |
 | src/ui/panels/comm_panel.py | 连接控制 + 报文滚动显示 |
+| src/ui/panels/command_panel.py | 指令控制面板 (TM1/TM2/查询单次+轮询) |
 | src/ui/panels/telemetry_panel.py | TM1/TM2/查询分页实时刷新 |
-| src/ui/components/telemetry_table.py | 参数名/原始值/工程量/单位 |
+| src/ui/components/telemetry_table.py | 参数名/原始值/工程量/单位/状态 |
 | src/ui/components/message_log.py | 方向色标 + HEX/文本 |
+| src/comms/tcp_client.py | TCP keepalive (空闲超时保护) |
 
-**交付**: 图形界面可实时展示遥测数据。
+**交付**: 统一单页布局无需切换标签页。连接与指令分离，手动触发 TM1/TM2 独立
+单次 + 同时轮询，查询包单次查询。TCP keepalive 防止串口盒空闲断连。
 
 ### M3 — 测试引擎 + 用例执行
 
