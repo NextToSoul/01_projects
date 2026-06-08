@@ -1,0 +1,26 @@
+﻿# 星云 PPCU RS422 通讯协议 — 协议定义
+# 对应协议文档: 星云RS422通讯协议A04_20250423
+protocol:
+  name: "星云 RS422 通讯协议"
+  version: "A04"
+
+frame:
+  command_header: [0xEB, 0x90]
+  response_header: [0x1A, 0xCF]
+
+checksum:
+  algorithm: sum_invert_low16
+  start_byte: 2
+
+addressing:
+  apid_command: 0x0520
+  apid_tm1: 0x0525
+  apid_tm2: 0x0526
+  apid_query: 0x0521
+  apid_ack: 0x0527
+
+uart:
+  baudrate: 115200
+  databits: 8
+  parity: odd
+  stopbits: 1

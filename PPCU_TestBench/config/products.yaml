@@ -1,0 +1,27 @@
+﻿# PPCU TestBench - 产品注册表
+# 在此注册受支持的产品类型，系统启动时根据产品 ID 加载对应的协议栈和测试用例。
+# 扩展新产品时，在此文件新增一条记录即可。
+
+products:
+  nebula_ppcu:
+    display_name: "星云 400W 霍尔电推进 PPCU"
+    protocol_class: nebula_rs422.NebulaRS422Protocol
+    protocol_def_dir: protocol_defs/nebula_ppcu
+    comms_defaults:
+      type: tcp
+      host: 192.168.117.26
+      port: 20004
+      timeout: 3.0
+    test_case_dir: test_cases/nebula_ppcu
+
+  # 后续扩展示例（预留）：
+  # product_b:
+  #   display_name: "预留产品 B"
+  #   protocol_class: ...
+  #   protocol_def_dir: ...
+  #   comms_defaults:
+  #     type: tcp
+  #     host: 10.0.0.1
+  #     port: 4002
+  #     timeout: 3.0
+  #   test_case_dir: ...

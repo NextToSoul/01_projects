@@ -84,7 +84,8 @@ PPCU_TestBench/
 ├── main.py                            # 应用入口
 ├── requirements.txt                   # 依赖清单
 ├── config/
-│   ├── default.yaml                   # 默认配置 (IP/端口/超时等)
+│   ├── default.yaml                   # 默认配置 (不直接修改)
+│   ├── local.yaml.example             # 覆盖模板
 │   └── products.yaml                  # 产品注册表
 ├── protocol_defs/                     # 产品协议定义 (纯YAML)
 │   └── nebula_ppcu/                   # 星云PPCU
@@ -251,8 +252,8 @@ products:
     protocol_def_dir: protocol_defs/nebula_ppcu
     comms_defaults:
       type: tcp
-      host: 192.168.1.10
-      port: 4001
+      host: 192.168.117.26
+      port: 20004
       timeout: 3.0
     test_case_dir: test_cases/nebula_ppcu
 ```
@@ -447,12 +448,10 @@ teardown:
 | 文件 | 内容 |
 |---|---|
 | requirements.txt | 依赖清单 |
+| src/comms/interface.py | CommsInterface ABC |
+| config/local.yaml.example | 本地覆盖模板 |
 | config/default.yaml | 默认配置 |
 | config/products.yaml | 产品注册表 |
-| src/comms/interface.py | CommsInterface ABC |
-| src/comms/tcp_client.py | TCP 连接/收发/断开 |
-| src/protocol/interface.py | ProtocolInterface ABC |
-| src/protocol/checksum.py | 累加和校验 |
 | src/protocol/nebula_rs422.py | FrameBuilder + FrameParser |
 | src/protocol/telemetry_loader.py | YAML → TmParamDef |
 | src/protocol/command_loader.py | YAML → CommandDef |

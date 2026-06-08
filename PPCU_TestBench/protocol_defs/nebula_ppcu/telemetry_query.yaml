@@ -1,0 +1,9 @@
+﻿# 星云 PPCU RS422 — 查询遥测包
+# 非周期，APID 0x0521，按需请求
+#
+# TODO: 查询遥测参数定义待协议文档确认后补充
+tm_type: query
+description: 查询遥测包（非周期）
+cycle_s: null
+
+params: []

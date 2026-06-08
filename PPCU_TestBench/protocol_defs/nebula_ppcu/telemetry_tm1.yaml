@@ -1,0 +1,46 @@
+﻿# 星云 PPCU RS422 — 常规遥测包 1 (TM1)
+# 周期 1s，APID 0x0525
+tm_type: tm1
+description: 常规遥测包 1
+cycle_s: 1
+
+params:
+  - id: TMHEDTZ1001
+    name: 模式字
+    byte_offset: 12
+    bit_offset: 4
+    bit_length: 4
+    type: enum
+    enum_ref: mode_word
+
+  - id: TMHEDTZ1002
+    name: 工作子模式字
+    byte_offset: 12
+    bit_offset: 0
+    bit_length: 4
+    type: enum
+    enum_ref: sub_mode_word
+
+  - id: TMHEDTZ1003
+    name: 被测电源母线电压
+    byte_offset: 14
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.0055556
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 300
+
+  - id: TMHEDTZ1005
+    name: 被测电源母线电流
+    byte_offset: 16
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: A
+    range_min: 0
+    range_max: 20

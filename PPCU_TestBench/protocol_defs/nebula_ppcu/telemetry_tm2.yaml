@@ -1,0 +1,10 @@
+﻿# 星云 PPCU RS422 — 常规遥测包 2 (TM2)
+# 周期 2s，APID 0x0526
+#
+# TODO: TM2 参数定义待协议文档确认后补充
+# 当前为占位模板，请用户提供完整 TM2 定义后更新。
+tm_type: tm2
+description: 常规遥测包 2
+cycle_s: 2
+
+params: []

@@ -1,0 +1,30 @@
+﻿# 星云 PPCU RS422 — 遥控指令码定义
+# 指令帧 APID 0x0520，应答 APID 视响应类型而定
+commands:
+  - id: 0x005A
+    name: 遥测1请求
+    category: telemetry_request
+    description: 常规遥测包1请求
+    data_length: 0
+    response_type: tm1
+
+  - id: 0x00AA
+    name: 遥测2请求
+    category: telemetry_request
+    description: 常规遥测包2请求
+    data_length: 0
+    response_type: tm2
+
+  - id: 0x0310
+    name: 查询遥测请求
+    category: telemetry_request
+    description: 查询遥测包（非周期）
+    data_length: 0
+    response_type: query
+
+  - id: 0x014A
+    name: 进入点火模式1
+    category: immediate_command
+    description: 立即遥控: 进入点火模式1
+    data_length: 0
+    response_type: ack

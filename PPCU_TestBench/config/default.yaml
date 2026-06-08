@@ -1,0 +1,28 @@
+﻿# PPCU TestBench - 默认配置
+#
+# 加载顺序: default.yaml → local.yaml (可选覆盖) → 用户选择产品 → 协议定义 YAML
+# 如需修改配置，请复制字段到 config/local.yaml 中修改（此文件在 .gitignore 中）。
+# 不要直接编辑 default.yaml，否则 git pull 后会丢失修改。
+#
+# 通讯链路: 测试电脑(TCP) → 串口转以太网盒(RS422) → PPCU
+
+app:
+  name: "PPCU TestBench"
+  version: 0.1.0
+  language: zh_CN
+  log_level: INFO
+  log_dir: logs
+
+comms:
+  tcp:
+    host: 192.168.117.26
+    port: 20004
+    connect_timeout_s: 3.0
+    receive_timeout_s: 1.0
+    send_retry_count: 2
+
+telemetry:
+  polling:
+    tm1_interval_s: 1
+    tm2_interval_s: 2
+  chain_check_interval_s: 30
