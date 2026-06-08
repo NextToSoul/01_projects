@@ -35,14 +35,14 @@ class TestChecksum:
         assert cs == bytes([0xFF, 0xFF])
 class TestTL:
     def test_tm1_count(self):
-        assert len(load_tm_defs(PD, "tm1")) == 4
+        assert len(load_tm_defs(PD, "tm1")) == 22
 
     def test_tm1_first(self):
         p = load_tm_defs(PD, "tm1")[0]
-        assert p.id == "TMHEDTZ1001"
+        assert p.id == "TMHEDTZ0099"
 
     def test_tm1_v(self):
-        p = load_tm_defs(PD, "tm1")[2]
+        p = load_tm_defs(PD, "tm1")[6]
         assert p.range_max == 300
 
     def test_missing(self):
@@ -97,9 +97,9 @@ class TestN422:
         assert r is not None and not r.parsed
     def test_parse_tm1(self, p):
         tm = bytearray(20)
-        tm[12] = 0x10               # mode=1 (点火), sub=0
-        tm[14:16] = (18000).to_bytes(2, "big")  # 100V
-        tm[16:18] = (5000).to_bytes(2, "big")   # 5A
+        tm[4] = 0x10                # mode=1 (点火), sub=0 (data_offset 4)
+        tm[6:8] = (18000).to_bytes(2, "big")   # 100V
+        tm[8:10] = (5000).to_bytes(2, "big")   # 5A
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
@@ -129,8 +129,8 @@ class TestInt:
 
     def test_tm1(self, p):
         tm = bytearray(20)
-        tm[12] = 0                 # 待机模式
-        tm[14:16] = (27000).to_bytes(2, "big")  # 150V
+        tm[4] = 0                  # 待机模式
+        tm[6:8] = (27000).to_bytes(2, "big")   # 150V
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
@@ -140,7 +140,7 @@ class TestInt:
 
     def test_high_v(self, p):
         tm = bytearray(20)
-        tm[14:16] = (60000).to_bytes(2, "big")  # ~333V > 300
+        tm[6:8] = (60000).to_bytes(2, "big")   # ~333V > 300
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
@@ -155,7 +155,7 @@ class TestInt:
         ]
         for rb, exp in cases:
             tm = bytearray(20)
-            tm[12] = rb
+            tm[4] = rb
             body = bytes(tm)
             resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
             resp += p.compute_checksum(resp[2:])

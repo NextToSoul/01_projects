@@ -45,9 +45,9 @@ async def _handle(reader, writer):
 
     # 返回模拟 TM1 遥测（待机模式, 100V, 5A）
     tm = bytearray(20)
-    tm[12] = 0x00           # 模式=0 (待机)
-    tm[14:16] = struct.pack(">H", 18000)  # 100V
-    tm[16:18] = struct.pack(">H", 5000)   # 5A
+    tm[4] = 0x00            # 模式=0 (待机), data_offset 4
+    tm[6:8] = struct.pack(">H", 18000)   # 100V
+    tm[8:10] = struct.pack(">H", 5000)   # 5A
     resp = make_tm1_response(bytes(tm))
     writer.write(resp)
     await writer.drain()

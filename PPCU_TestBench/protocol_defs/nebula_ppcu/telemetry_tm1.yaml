@@ -1,28 +1,104 @@
-﻿# 星云 PPCU RS422 — 常规遥测包 1 (TM1)
-# 周期 1s，APID 0x0525
 tm_type: tm1
-description: 常规遥测包 1
+description: 常规遥测包1
 cycle_s: 1
 
 params:
+  - id: TMHEDTZ0099
+    name: 遥测帧计数低位
+    byte_offset: 0
+    byte_length: 1
+    type: uint8
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
+  - id: TMHEDTZ0098
+    name: 遥测帧计数高位
+    byte_offset: 1
+    byte_length: 1
+    type: uint8
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
+  - id: TMHEDTZ0097
+    name: 完整包指示字
+    byte_offset: 2
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
   - id: TMHEDTZ1001
     name: 模式字
-    byte_offset: 12
+    byte_offset: 4
     bit_offset: 4
     bit_length: 4
     type: enum
     enum_ref: mode_word
-
   - id: TMHEDTZ1002
     name: 工作子模式字
-    byte_offset: 12
+    byte_offset: 4
     bit_offset: 0
     bit_length: 4
     type: enum
     enum_ref: sub_mode_word
-
+  - id: TMHEDTZ1099
+    name: 自检状态
+    byte_offset: 5
+    byte_length: 1
+    type: uint8
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
   - id: TMHEDTZ1003
     name: 被测电源母线电压
+    byte_offset: 6
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.0055556
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 300
+  - id: TMHEDTZ1005
+    name: 被测电源母线电流
+    byte_offset: 8
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: A
+    range_min: 0
+    range_max: 20
+  - id: TMHEDTZ1007
+    name: 阴极加热电源母线电压
+    byte_offset: 10
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.0055556
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 300
+  - id: TMHEDTZ1009
+    name: 阴极加热电源母线电流
+    byte_offset: 12
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: A
+    range_min: 0
+    range_max: 30
+  - id: TMHEDTZ1011
+    name: 阳极电源电压
     byte_offset: 14
     byte_length: 2
     type: uint16
@@ -32,9 +108,8 @@ params:
     unit: V
     range_min: 0
     range_max: 300
-
-  - id: TMHEDTZ1005
-    name: 被测电源母线电流
+  - id: TMHEDTZ1013
+    name: 阳极电源电流
     byte_offset: 16
     byte_length: 2
     type: uint16
@@ -43,4 +118,106 @@ params:
     decimal_places: 2
     unit: A
     range_min: 0
-    range_max: 20
+    range_max: 30
+  - id: TMHEDTZ1015
+    name: 励磁电压
+    byte_offset: 18
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.0055556
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 300
+  - id: TMHEDTZ1017
+    name: 励磁电流
+    byte_offset: 20
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: A
+    range_min: 0
+    range_max: 30
+  - id: TMHEDTZ1019
+    name: 压力传感器1 LP
+    byte_offset: 22
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 5
+  - id: TMHEDTZ1020
+    name: 保留1
+    byte_offset: 24
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 5
+  - id: TMHEDTZ1021
+    name: 压力传感器2 HP
+    byte_offset: 26
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 5
+  - id: TMHEDTZ1022
+    name: 保留2
+    byte_offset: 28
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 0.001
+    decimal_places: 2
+    unit: V
+    range_min: 0
+    range_max: 5
+  - id: TMHEDTZ1023
+    name: 电磁阀及自锁阀状态
+    byte_offset: 30
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
+  - id: TMHEDTZ1024
+    name: 电源及故障状态
+    byte_offset: 32
+    byte_length: 2
+    type: uint16
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
+  - id: TMHEDTZ1040
+    name: 异常退出标志1
+    byte_offset: 34
+    byte_length: 1
+    type: uint8
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
+  - id: TMHEDTZ1047
+    name: 异常退出标志2
+    byte_offset: 35
+    byte_length: 1
+    type: uint8
+    endian: big
+    scale: 1.0
+    decimal_places: 0
+    unit: ""
