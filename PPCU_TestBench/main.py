@@ -20,6 +20,12 @@ if str(BASE_DIR) not in sys.path:
 
 
 def run_gui():
+    import os
+    import PySide6
+    from pathlib import Path
+    plugin_path = str(Path(PySide6.__file__).parent / "plugins")
+    os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = plugin_path
+
     import qasync
     from PySide6.QtWidgets import QApplication
     from src.ui.main_window import MainWindow
@@ -128,7 +134,7 @@ def main() -> None:
         return
 
     log.info("产品: %s", args.product)
-    log.info("GUI 将在 M2 实现")
+    run_gui()
     print("\nPPCU TestBench v0.1.0 — 就绪")
     print("  --self-test  运行自检")
     print("  --list-products  查看可用产品")
