@@ -1,5 +1,4 @@
 ﻿# 星云 PPCU RS422 — 遥控指令码定义
-# 指令帧 APID 0x0520，应答 APID 视响应类型而定
 commands:
   - id: 0x005A
     name: 遥测1请求
@@ -25,6 +24,6 @@ commands:
   - id: 0x014A
     name: 进入点火模式1
     category: immediate_command
-    description: 立即遥控: 进入点火模式1
+    description: "立即遥控: 进入点火模式1"
     data_length: 0
     response_type: ack

@@ -74,3 +74,25 @@ Corrections, insights, and knowledge gaps captured during development.
 - Tags: safety, power, parameters, communication
 
 ---
+
+## [LRN-20260608-002] best_practice
+
+**Logged**: 2026-06-08T22:50:00+08:00
+**Priority**: high
+**Status**: promoted
+**Area**: config
+
+### Summary
+项目开始前须先配置 Python 虚拟环境，依赖安装使用国内 PyPI 镜像。
+
+### Details
+- 项目工作开始之前先建 .venv，配置解释器
+- pip install 必须用国内镜像（清华源 https://pypi.tuna.tsinghua.edu.cn/simple）
+- 必须带代理 --proxy http://127.0.0.1:17897
+- .venv 放在项目所在非系统盘
+
+### Metadata
+- Source: user_feedback
+- Tags: environment, pip, mirror, proxy
+
+---
