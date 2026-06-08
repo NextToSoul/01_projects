@@ -19,6 +19,19 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 
+def run_gui():
+    import qasync
+    from PySide6.QtWidgets import QApplication
+    from src.ui.main_window import MainWindow
+    app = QApplication(sys.argv)
+    app.setApplicationName("PPCU TestBench")
+    win = MainWindow()
+    win.show()
+    loop = qasync.QEventLoop(app)
+    with loop:
+        loop.run_forever()
+
+
 def setup_logging(level: str) -> None:
     logging.basicConfig(
         level=getattr(logging, level.upper(), logging.INFO),
