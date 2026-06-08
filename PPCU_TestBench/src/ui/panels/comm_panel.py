@@ -35,6 +35,7 @@ class CommPanel(QWidget):
         bl.addWidget(self._status)
 
         grp = QGroupBox("\u901a\u8baf\u8bbe\u7f6e")
+        self._grp = grp
         w = QVBoxLayout()
         w.addLayout(hl)
         w.addLayout(bl)
@@ -80,3 +81,11 @@ class CommPanel(QWidget):
 
     def append_recv(self, data: bytes):
         self._log.append_receive(data)
+
+    @property
+    def connection_bar(self):
+        return self._grp
+
+    @property
+    def log_widget(self):
+        return self._log

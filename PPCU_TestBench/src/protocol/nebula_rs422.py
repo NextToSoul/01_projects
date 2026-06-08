@@ -75,7 +75,7 @@ class NebulaRS422Protocol(ProtocolInterface):
         frame.extend(self.COMMAND_HEADER)          #  0-1: 帧头
         frame.extend(self.COMMAND_APID)             #  2-3: APID
         frame.extend(self._next_sequence())          #  4-5: 序列号
-        frame.extend((len(data) + 2).to_bytes(2, "big"))  #  6-7: 长度(含校验)
+        frame.extend((len(data) // 2).to_bytes(2, "big"))  #  6-7: 长度(16-bit words)
         frame.extend(data)                           #  8+:  数据域
         frame.extend(self.compute_checksum(bytes(frame[2:])))  # 末尾: 校验
 
@@ -172,7 +172,8 @@ class NebulaRS422Protocol(ProtocolInterface):
         """14 位源包序列计数，自动递增、溢出归零。"""
         seq = self._sequence
         self._sequence = (self._sequence + 1) & 0x3FFF
-        return seq.to_bytes(2, byteorder="big")
+        flags = 3  # CCSDS 分组标志: 0b11 = standalone packet
+        return ((flags << 14) | seq).to_bytes(2, byteorder="big")
 
     def _get_enums(self) -> dict[str, dict[int, str]]:
         if not self._enums:

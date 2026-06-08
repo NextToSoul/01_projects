@@ -13,6 +13,12 @@
   2. git commit -m "descriptive message"
   3. git -c http.proxy=http://127.0.0.1:17897 push
 - 提交信息根据变更内容自动生成语义化格式。
+ 
+## Git Sync After Modification
+
+- AI 完成任何代码修改、文件增删、或配置变更后，必须自动执行 git sync（add → commit → push），才算作一次任务完成。
+- 此规则适用于所有直接的代码变更、文档修改、配置调整等数据变更场景。
+- 非数据变更（如仅回答问题、分析代码、查看文档等）不触发自动同步，但如果用户明确要求同步则仍需执行。
 
 ## Power-Related Parameter Safety
 

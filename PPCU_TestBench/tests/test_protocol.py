@@ -111,10 +111,10 @@ class TestN422:
     def test_seq(self, p):
         cmd = Command(cmd_id=0x5A, name="T")
         p._sequence = 0x3FFE
-        assert p.build_request(cmd)[4:6] == bytes([0x3F, 0xFE])
-        assert p.build_request(cmd)[4:6] == bytes([0x3F, 0xFF])
-        assert p.build_request(cmd)[4:6] == bytes([0, 0])
-        assert p.build_request(cmd)[4:6] == bytes([0, 1])
+        assert p.build_request(cmd)[4:6] == bytes([0xFF, 0xFE])
+        assert p.build_request(cmd)[4:6] == bytes([0xFF, 0xFF])
+        assert p.build_request(cmd)[4:6] == bytes([0xC0, 0x00])
+        assert p.build_request(cmd)[4:6] == bytes([0xC0, 0x01])
 
     def test_verify_cs(self, p):
         f = p.build_request(Command(cmd_id=0x5A, name="T"))

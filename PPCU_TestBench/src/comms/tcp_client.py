@@ -1,4 +1,4 @@
-﻿"""PPCU TestBench — TCP 通信层实现
+"""PPCU TestBench — TCP 通信层实现
 
 通过 asyncio 流式 API 实现 TCP → 串口转以太网盒 → RS422 通信。
 """
@@ -7,9 +7,10 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import socket
 
 from .interface import (
-    CommsInterface,
+CommsInterface,
     ConnectionTimeoutError,
     ReceiveError,
     SendError,
@@ -44,6 +45,7 @@ class TcpClient(CommsInterface):
                 timeout=timeout,
             )
             self._connected = True
+            self._set_keepalive()
             logger.info("已连接 %s:%d", host, port)
             return True
         except asyncio.TimeoutError:
@@ -106,3 +108,16 @@ class TcpClient(CommsInterface):
     @property
     def is_connected(self) -> bool:
         return self._connected
+
+    def _set_keepalive(self) -> None:
+        """Enable TCP keepalive to prevent serial-to-Ethernet box from closing idle connections."""
+        try:
+            sock = self._writer.transport.get_extra_info("socket")
+            if sock is not None:
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPIDLE, 1)
+                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 1)
+                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 5)
+                logger.info("TCP keepalive enabled (idle=1s, interval=1s, count=5)")
+        except Exception as exc:
+            logger.warning("TCP keepalive not set: %s", exc)
