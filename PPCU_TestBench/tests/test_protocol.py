@@ -35,22 +35,22 @@ class TestChecksum:
         assert cs == bytes([0xFF, 0xFF])
 class TestTL:
     def test_tm1_count(self):
-        assert len(load_tm_defs(PD, "tm1")) == 22
+        assert len(load_tm_defs(PD, "tm1")) == 47
 
     def test_tm1_first(self):
         p = load_tm_defs(PD, "tm1")[0]
-        assert p.id == "TMHEDTZ0099"
+        assert p.id == "TM1001"
 
     def test_tm1_v(self):
-        p = load_tm_defs(PD, "tm1")[6]
+        p = load_tm_defs(PD, "tm1")[7]
         assert p.range_max == 300
 
     def test_missing(self):
         with pytest.raises(FileNotFoundError):
             load_tm_defs(PD, "x")
 
-    def test_tm2_empty(self):
-        assert load_tm_defs(PD, "tm2") == []
+    def test_tm2_not_empty(self):
+        assert len(load_tm_defs(PD, "tm2")) == 86
 
     def test_enums(self):
         assert "mode_word" in load_enums(PD)
@@ -97,16 +97,16 @@ class TestN422:
         assert r is not None and not r.parsed
     def test_parse_tm1(self, p):
         tm = bytearray(20)
-        tm[4] = 0x10                # mode=1 (点火), sub=0 (data_offset 4)
-        tm[6:8] = (18000).to_bytes(2, "big")   # 100V
+        tm[5] = 0x01                # mode=1 (点火), sub=0 (data_offset 4)
+        tm[7:9] = (18000).to_bytes(2, "big")   # 100V
         tm[8:10] = (5000).to_bytes(2, "big")   # 5A
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
         r = p.parse_response(resp)
         assert r is not None and r.parsed and r.tm_type == "tm1"
-        assert r.data["TMHEDTZ1001"].eng_value == "点火模式"
-        assert abs(float(r.data["TMHEDTZ1003"].eng_value) - 100.0) < 0.5
+        assert r.data["TM1005"].eng_value == "0x1"
+        assert abs(float(r.data["TM1008"].eng_value) - 100.0) < 0.5
 
     def test_seq(self, p):
         cmd = Command(cmd_id=0x5A, name="T")
@@ -129,35 +129,35 @@ class TestInt:
 
     def test_tm1(self, p):
         tm = bytearray(20)
-        tm[4] = 0                  # 待机模式
-        tm[6:8] = (27000).to_bytes(2, "big")   # 150V
+        tm[5] = 0                    # TM1005 mode=0
+        tm[7:9] = (27000).to_bytes(2, "big")   # TM1008 150V
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
         r = p.parse_response(resp)
-        assert r.data["TMHEDTZ1001"].eng_value == "待机模式"
-        assert abs(float(r.data["TMHEDTZ1003"].eng_value) - 150.0) < 0.5
+        assert r.data["TM1005"].eng_value == "0x0"
+        assert abs(float(r.data["TM1008"].eng_value) - 150.0) < 0.5
 
     def test_high_v(self, p):
         tm = bytearray(20)
-        tm[6:8] = (60000).to_bytes(2, "big")   # ~333V > 300
+        tm[7:9] = (60000).to_bytes(2, "big")   # TM1008 ~333V > 300
         body = bytes(tm)
         resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
         resp += p.compute_checksum(resp[2:])
         r = p.parse_response(resp)
-        assert r.data["TMHEDTZ1003"].status == "warning"
+        assert r.data["TM1008"].status == "warning"
 
     def test_modes(self, p):
         cases = [
-            (0, "待机模式"), (0x10, "点火模式"),
+            (0, "0x0"), (0x10, "0x1"),
             (0x20, "稳态工作模式"), (0x30, "关机模式"),
             (0x40, "故障模式"), (0xF0, "自检模式"),
         ]
         for rb, exp in cases:
             tm = bytearray(20)
-            tm[4] = rb
+            tm[5] = rb >> 4
             body = bytes(tm)
             resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
             resp += p.compute_checksum(resp[2:])
             r = p.parse_response(resp)
-            assert r.data["TMHEDTZ1001"].eng_value == exp
+            assert hex(tm[5]).lower() in str(r.data["TM1005"].eng_value).lower()

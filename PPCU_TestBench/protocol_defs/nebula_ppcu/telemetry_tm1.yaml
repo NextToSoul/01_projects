@@ -1,223 +1,501 @@
 tm_type: tm1
-description: 常规遥测包1
-cycle_s: 1
-
 params:
-  - id: TMHEDTZ0099
-    name: 遥测帧计数低位
+
+  - id: TM1001
+    name: 遥测请求指令计数
     byte_offset: 0
     byte_length: 1
     type: uint8
-    endian: big
     scale: 1.0
+    endian: big
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ0098
-    name: 遥测帧计数高位
+    range_min: 0
+    range_max: 255
+
+  - id: TM1002
+    name: 正确接收指令计数
     byte_offset: 1
     byte_length: 1
     type: uint8
-    endian: big
     scale: 1.0
+    endian: big
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ0097
-    name: 完整包指示字
+    range_min: 0
+    range_max: 255
+
+  - id: TM1003
+    name: 错误接收指令计数
     byte_offset: 2
+    byte_length: 1
+    type: uint8
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    range_min: 0
+    range_max: 255
+
+  - id: TM1004
+    name: 最近执行指令码
+    byte_offset: 3
     byte_length: 2
     type: uint16
-    endian: big
     scale: 1.0
+    endian: big
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ1001
-    name: 模式字
-    byte_offset: 4
-    bit_offset: 4
-    bit_length: 4
-    type: enum
-    enum_ref: mode_word
-  - id: TMHEDTZ1002
-    name: 工作子模式字
-    byte_offset: 4
+    range_min: 0
+    range_max: 255
+
+  - id: TM1005
+    name: 工作模式字
+    byte_offset: 5
     bit_offset: 0
     bit_length: 4
     type: enum
-    enum_ref: sub_mode_word
-  - id: TMHEDTZ1099
-    name: 自检状态
+    decimal_places: 0
+    range_min: 0
+    range_max: 15
+
+  - id: TM1006
+    name: 工作子模式字
     byte_offset: 5
+    bit_offset: 4
+    bit_length: 4
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 15
+
+  - id: TM1007
+    name: 自检状态
+    byte_offset: 6
     byte_length: 1
     type: uint8
-    endian: big
     scale: 1.0
+    endian: big
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ1003
-    name: 被测电源母线电压
-    byte_offset: 6
+    range_min: 0
+    range_max: 255
+
+  - id: TM1008
+    name: 阳极电源输出电压
+    byte_offset: 7
     byte_length: 2
     type: uint16
+    scale: 0.0055555556
     endian: big
-    scale: 0.0055556
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 300
-  - id: TMHEDTZ1005
-    name: 被测电源母线电流
-    byte_offset: 8
+
+  - id: TM1009
+    name: 阳极电源输出电流
+    byte_offset: 9
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: A
     range_min: 0
     range_max: 20
-  - id: TMHEDTZ1007
-    name: 阴极加热电源母线电压
-    byte_offset: 10
+
+  - id: TM1010
+    name: 阴极加热电源输出电压
+    byte_offset: 11
     byte_length: 2
     type: uint16
+    scale: 0.0055555556
     endian: big
-    scale: 0.0055556
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 300
-  - id: TMHEDTZ1009
-    name: 阴极加热电源母线电流
-    byte_offset: 12
+
+  - id: TM1011
+    name: 阴极加热电源输出电流
+    byte_offset: 13
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: A
     range_min: 0
     range_max: 30
-  - id: TMHEDTZ1011
-    name: 阳极电源电压
-    byte_offset: 14
+
+  - id: TM1012
+    name: 阴极触持电压
+    byte_offset: 15
     byte_length: 2
     type: uint16
+    scale: 0.0055555556
     endian: big
-    scale: 0.0055556
     decimal_places: 2
     unit: V
     range_min: 0
-    range_max: 300
-  - id: TMHEDTZ1013
-    name: 阳极电源电流
-    byte_offset: 16
+    range_max: 30
+
+  - id: TM1013
+    name: 阴极触持电流
+    byte_offset: 17
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: A
     range_min: 0
     range_max: 30
-  - id: TMHEDTZ1015
+
+  - id: TM1014
     name: 励磁电压
-    byte_offset: 18
+    byte_offset: 19
     byte_length: 2
     type: uint16
+    scale: 0.0055555556
     endian: big
-    scale: 0.0055556
     decimal_places: 2
     unit: V
     range_min: 0
-    range_max: 300
-  - id: TMHEDTZ1017
+    range_max: 30
+
+  - id: TM1015
     name: 励磁电流
-    byte_offset: 20
+    byte_offset: 21
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: A
     range_min: 0
     range_max: 30
-  - id: TMHEDTZ1019
-    name: 压力传感器1 LP
-    byte_offset: 22
+
+  - id: TM1016
+    name: 高压传感器
+    byte_offset: 23
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 5
-  - id: TMHEDTZ1020
-    name: 保留1
-    byte_offset: 24
+
+  - id: TM1017
+    name: 保留
+    byte_offset: 25
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 5
-  - id: TMHEDTZ1021
-    name: 压力传感器2 HP
-    byte_offset: 26
+
+  - id: TM1018
+    name: 低压传感器1
+    byte_offset: 27
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 5
-  - id: TMHEDTZ1022
-    name: 保留2
-    byte_offset: 28
+
+  - id: TM1019
+    name: 保留
+    byte_offset: 29
     byte_length: 2
     type: uint16
-    endian: big
     scale: 0.001
+    endian: big
     decimal_places: 2
     unit: V
     range_min: 0
     range_max: 5
-  - id: TMHEDTZ1023
-    name: 电磁阀及自锁阀状态
-    byte_offset: 30
-    byte_length: 2
-    type: uint16
-    endian: big
-    scale: 1.0
+
+  - id: TM1020
+    name: 比例阀加电状态
+    byte_offset: 31
+    bit_offset: 0
+    bit_length: 2
+    type: enum
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ1024
-    name: 电源及故障状态
+    range_min: 0
+    range_max: 3
+
+  - id: TM1021
+    name: 电磁阀SV1状态遥测
+    byte_offset: 31
+    bit_offset: 2
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1022
+    name: 电磁阀SV2状态遥测
+    byte_offset: 31
+    bit_offset: 4
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1023
+    name: 电磁阀SV3状态遥测
+    byte_offset: 31
+    bit_offset: 6
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1024
+    name: 电磁阀SV4状态遥测
     byte_offset: 32
-    byte_length: 2
-    type: uint16
-    endian: big
-    scale: 1.0
+    bit_offset: 0
+    bit_length: 2
+    type: enum
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ1040
-    name: 异常退出标志1
+    range_min: 0
+    range_max: 3
+
+  - id: TM1025
+    name: 电磁阀SV5状态遥测
+    byte_offset: 32
+    bit_offset: 2
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1026
+    name: 自锁阀1加电状态
+    byte_offset: 32
+    bit_offset: 4
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1027
+    name: 自锁阀2加电状态
+    byte_offset: 32
+    bit_offset: 6
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1028
+    name: PPU阳极电源开关机状态
+    byte_offset: 33
+    bit_offset: 0
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1029
+    name: PPU阴极加热电源开关机状态
+    byte_offset: 33
+    bit_offset: 2
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1030
+    name: 阴极触持电源开机状态
+    byte_offset: 33
+    bit_offset: 4
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1031
+    name: 励磁电源开机状态
+    byte_offset: 33
+    bit_offset: 6
+    bit_length: 2
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 3
+
+  - id: TM1032
+    name: 阳极异常1
     byte_offset: 34
-    byte_length: 1
-    type: uint8
-    endian: big
-    scale: 1.0
+    bit_offset: 0
+    bit_length: 1
+    type: enum
     decimal_places: 0
-    unit: ""
-  - id: TMHEDTZ1047
-    name: 异常退出标志2
+    range_min: 0
+    range_max: 1
+
+  - id: TM1033
+    name: 阳极异常2
+    byte_offset: 34
+    bit_offset: 1
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1034
+    name: 压力异常1
+    byte_offset: 34
+    bit_offset: 2
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1035
+    name: 压力异常2
+    byte_offset: 34
+    bit_offset: 3
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1036
+    name: 温度异常
+    byte_offset: 34
+    bit_offset: 4
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1037
+    name: 流量调节异常超时退出
+    byte_offset: 34
+    bit_offset: 5
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1038
+    name: 流量控制超差异常退出
+    byte_offset: 34
+    bit_offset: 6
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1039
+    name: 阴极加热电流异常退出
+    byte_offset: 34
+    bit_offset: 7
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1040
+    name: 阴极点火电压异常退出
     byte_offset: 35
-    byte_length: 1
-    type: uint8
-    endian: big
-    scale: 1.0
+    bit_offset: 0
+    bit_length: 1
+    type: enum
     decimal_places: 0
-    unit: ""
+    range_min: 0
+    range_max: 1
+
+  - id: TM1041
+    name: 阴极点火时间超时异常退出
+    byte_offset: 35
+    bit_offset: 1
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1042
+    name: 阳极电流限流长时间维持退出
+    byte_offset: 35
+    bit_offset: 2
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1043
+    name: 阳极低功率退出
+    byte_offset: 35
+    bit_offset: 3
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1044
+    name: 阳极高功率退出
+    byte_offset: 35
+    bit_offset: 4
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1045
+    name: 阳极电压异常退出
+    byte_offset: 35
+    bit_offset: 5
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1046
+    name: 励磁电流异常退出
+    byte_offset: 35
+    bit_offset: 6
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1
+
+  - id: TM1047
+    name: 指令/时间到退出
+    byte_offset: 35
+    bit_offset: 7
+    bit_length: 1
+    type: enum
+    decimal_places: 0
+    range_min: 0
+    range_max: 1

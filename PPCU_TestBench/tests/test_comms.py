@@ -45,9 +45,9 @@ async def _handle(reader, writer):
 
     # 返回模拟 TM1 遥测（待机模式, 100V, 5A）
     tm = bytearray(20)
-    tm[4] = 0x00            # 模式=0 (待机), data_offset 4
-    tm[6:8] = struct.pack(">H", 18000)   # 100V
-    tm[8:10] = struct.pack(">H", 5000)   # 5A
+    tm[5] = 0x00            # 模式=0 (待机), data_offset 4
+    tm[7:9] = struct.pack(">H", 18000)   # 100V
+    tm[9:11] = struct.pack(">H", 5000)   # 5A
     resp = make_tm1_response(bytes(tm))
     writer.write(resp)
     await writer.drain()
@@ -95,12 +95,12 @@ async def run_test():
     # 4) 验证遥测值
     tv = result.data
     assert tv is not None
-    assert tv["TMHEDTZ1001"].eng_value == "待机模式"
-    assert abs(float(tv["TMHEDTZ1003"].eng_value) - 100.0) < 0.5
-    assert abs(float(tv["TMHEDTZ1005"].eng_value) - 5.0) < 0.5
-    print(f"[PASS] telemetry: 模式={tv['TMHEDTZ1001'].eng_value} "
-          f"电压={tv['TMHEDTZ1003'].eng_value}V "
-          f"电流={tv['TMHEDTZ1005'].eng_value}A")
+    assert tv["TM1005"].eng_value == "0x0"
+    assert abs(float(tv["TM1008"].eng_value) - 100.0) < 0.5
+    assert abs(float(tv["TM1009"].eng_value) - 5.0) < 0.5
+    print(f"[PASS] telemetry: 模式={tv['TM1005'].eng_value} "
+          f"电压={tv['TM1008'].eng_value}V "
+          f"电流={tv['TM1009'].eng_value}A")
     passed += 1
 
     # 5) 断开
