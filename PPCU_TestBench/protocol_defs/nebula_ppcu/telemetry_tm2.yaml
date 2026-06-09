@@ -71,14 +71,14 @@ params:
     range_max: 60
 
   - id: TM2007
-    name: 低压传感器LP1压力滤波值
+    name: 低压传感器LP1采样值
     byte_offset: 11
     byte_length: 2
     type: uint16
-    scale: 0.01
+    scale: 0.001
     endian: big
     decimal_places: 2
-    unit: kpa
+    unit: V
     range_min: -10
     range_max: 50
 

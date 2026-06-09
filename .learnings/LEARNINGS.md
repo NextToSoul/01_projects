@@ -96,3 +96,38 @@ Corrections, insights, and knowledge gaps captured during development.
 - Tags: environment, pip, mirror, proxy
 
 ---
+## [LRN-20250609-001] best_practice
+
+**Logged**: 2026-06-09T18:00:00+08:00
+**Priority**: high
+**Status**: pending
+**Area**: frontend
+
+### Summary
+QTableWidget 实时刷新场景必须复用 Item、批量更新 UI、避免每变化一个值就创建一个 QTimer，否则大量参数轮询时会导致界面严重卡顿。
+
+### Details
+PPCU TestBench 的遥测面板在轮询模式下每秒刷新 238+ 个参数，每个参数 8 个单元格。旧方案每帧更新时每次都 
+ew QTableWidgetItem() 再 setItem()，Qt 内部对每个 setItem 触发一次 UI 排版重绘；同时值变化高亮功能为每个变化的值 
+ew QTimer()，模拟量持续变化导致定时器每秒创建销毁数十次。三者叠加→ UI 线程被排版和定时器调度淹没，界面卡顿。
+
+### Suggested Action
+三个优化点应同时实施：
+1. **复用 Item**: self._items 字典按 (param_id, col) 缓存 Item，首次创建后后续只 setText()
+2. **批量刷新**: 整个更新循环用 setUpdatesEnabled(False) / setUpdatesEnabled(True) 包裹
+3. **单定时器批量清除高亮**: 用 _hl_dirty 集合记录所有变化过的 key，单一 QTimer + _sweep_highlights 批量恢复背景色
+
+### Resolution
+- **Resolved**: 2026-06-09T18:30:00+08:00
+- **Notes**: 三项优化已在 telemetry_table.py 中实施：QTableWidgetItem 复用（self._items 字典）、setUpdatesEnabled(False/True) 批量刷新、单 QTimer + hl_dirty 集合批量清除高亮。验证通过，轮询卡顿消除。
+
+### Metadata
+- Source: user_feedback
+- Related Files: PPCU_TestBench/src/ui/components/telemetry_table.py
+- Tags: performance, qt, telemetry, frontend
+- Pattern-Key: perf.qtablewidget.realTime
+- Recurrence-Count: 1
+- First-Seen: 2026-06-09
+- Last-Seen: 2026-06-09
+
+---

@@ -26,6 +26,7 @@ import asyncio
 
 from .panels.comm_panel import CommPanel
 from .panels.command_panel import CommandPanel
+from .panels.remote_command_panel import RemoteCommandPanel
 from .panels.telemetry_panel import TelemetryPanel
 
 CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
@@ -42,7 +43,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("PPCU TestBench v0.1.0")
+        self.setWindowTitle("PPCU TestBench v0.1.2")
         self.resize(1200, 800)
         self._client = TcpClient()
         self._proto: Optional[ProtocolInterface] = None
@@ -54,11 +55,13 @@ class MainWindow(QMainWindow):
         self._comm = CommPanel()
         self._command = CommandPanel()
         self._telemetry = TelemetryPanel()
+        self._remote = RemoteCommandPanel()
         self._comm.connect_requested.connect(self._on_connect)
         self._comm.disconnect_requested.connect(self._on_disconnect)
         self._command.single_query_requested.connect(self._on_single_query)
         self._command.poll_started.connect(self._on_start_poll)
         self._command.poll_stopped.connect(self._on_stop_poll)
+        self._remote.send_requested.connect(self._on_remote_send)
         central = QWidget()
         lo = QVBoxLayout(central)
         lo.setContentsMargins(4, 4, 4, 4)
@@ -70,9 +73,15 @@ class MainWindow(QMainWindow):
         ll = QVBoxLayout(left)
         ll.setContentsMargins(0, 0, 0, 0)
         ll.addWidget(self._command)
-        ll.addWidget(self._comm.log_widget, 1)
+        ll.addWidget(self._remote, 1)
         sp.addWidget(left)
-        sp.addWidget(self._telemetry)
+        right = QWidget()
+        rl = QVBoxLayout(right)
+        rl.setContentsMargins(0, 0, 0, 0)
+        rl.setSpacing(4)
+        rl.addWidget(self._telemetry, 3)
+        rl.addWidget(self._comm.log_widget, 2)
+        sp.addWidget(right)
         sp.setSizes([450, 750])
         lo.addWidget(sp, 1)
         self.setCentralWidget(central)
@@ -194,6 +203,26 @@ class MainWindow(QMainWindow):
             self._poll_active[t] = False
             self._busy[t] = False
  
+    @asyncSlot()
+    async def _on_remote_send(self, frame: bytes) -> None:
+        if self._proto is None or not self._client.is_connected:
+            return
+        try:
+            async with self._comms_lock:
+                self._comm.append_send(frame)
+                await self._client.send(frame)
+                data = await self._client.receive(timeout=2.0)
+                if data:
+                    self._comm.append_recv(data)
+                    result = self._proto.parse_response(data)
+                    if result and result.parsed and result.data:
+                        self._telemetry.update_tm(result.tm_type, result.data)
+                    self.set_status('已发送遥控指令')
+                else:
+                    self.set_status('遥控指令: 未收到应答')
+        except Exception as exc:
+            self.set_status(f'发送失败: {exc}')
+
     @asyncSlot()
     async def _on_import_telemetry(self):
         filepath, _ = QFileDialog.getOpenFileName(
