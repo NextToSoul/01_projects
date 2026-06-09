@@ -71,6 +71,7 @@ async def run_test():
     passed += 1
 
     # 2) 发送 TM1 请求
+    cmd = Command(cmd_id=0x005A, name="遥测1请求")
     frame = proto.build_request(cmd)
     assert proto.verify_checksum(frame)
     await client.send(frame)

@@ -188,7 +188,7 @@ params:
   - id: TM1020
     name: 比例阀加电状态
     byte_offset: 31
-    bit_offset: 0
+    bit_offset: 6
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1020
@@ -197,7 +197,7 @@ params:
   - id: TM1021
     name: 电磁阀SV1状态遥测
     byte_offset: 31
-    bit_offset: 2
+    bit_offset: 4
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1021
@@ -206,7 +206,7 @@ params:
   - id: TM1022
     name: 电磁阀SV2状态遥测
     byte_offset: 31
-    bit_offset: 4
+    bit_offset: 2
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1022
@@ -215,7 +215,7 @@ params:
   - id: TM1023
     name: 电磁阀SV3状态遥测
     byte_offset: 31
-    bit_offset: 6
+    bit_offset: 0
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1023
@@ -224,7 +224,7 @@ params:
   - id: TM1024
     name: 电磁阀SV4状态遥测
     byte_offset: 32
-    bit_offset: 0
+    bit_offset: 6
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1024
@@ -233,7 +233,7 @@ params:
   - id: TM1025
     name: 电磁阀SV5状态遥测
     byte_offset: 32
-    bit_offset: 2
+    bit_offset: 4
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1025
@@ -242,7 +242,7 @@ params:
   - id: TM1026
     name: 自锁阀1加电状态
     byte_offset: 32
-    bit_offset: 4
+    bit_offset: 2
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1026
@@ -251,7 +251,7 @@ params:
   - id: TM1027
     name: 自锁阀2加电状态
     byte_offset: 32
-    bit_offset: 6
+    bit_offset: 0
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1027
@@ -260,7 +260,7 @@ params:
   - id: TM1028
     name: PPU阳极电源开关机状态
     byte_offset: 33
-    bit_offset: 0
+    bit_offset: 6
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1028
@@ -269,7 +269,7 @@ params:
   - id: TM1029
     name: PPU阴极加热电源开关机状态
     byte_offset: 33
-    bit_offset: 2
+    bit_offset: 4
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1029
@@ -278,7 +278,7 @@ params:
   - id: TM1030
     name: 阴极触持电源开机状态
     byte_offset: 33
-    bit_offset: 4
+    bit_offset: 2
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1030
@@ -287,7 +287,7 @@ params:
   - id: TM1031
     name: 励磁电源开机状态
     byte_offset: 33
-    bit_offset: 6
+    bit_offset: 0
     bit_length: 2
     type: enum
     enum_ref: tm1_tm1031
@@ -296,7 +296,7 @@ params:
   - id: TM1032
     name: 阳极异常1
     byte_offset: 34
-    bit_offset: 0
+    bit_offset: 7
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1032
@@ -305,7 +305,7 @@ params:
   - id: TM1033
     name: 阳极异常2
     byte_offset: 34
-    bit_offset: 1
+    bit_offset: 6
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1033
@@ -314,7 +314,7 @@ params:
   - id: TM1034
     name: 压力异常1
     byte_offset: 34
-    bit_offset: 2
+    bit_offset: 5
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1034
@@ -323,7 +323,7 @@ params:
   - id: TM1035
     name: 压力异常2
     byte_offset: 34
-    bit_offset: 3
+    bit_offset: 4
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1035
@@ -332,7 +332,7 @@ params:
   - id: TM1036
     name: 温度异常
     byte_offset: 34
-    bit_offset: 4
+    bit_offset: 3
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1036
@@ -341,7 +341,7 @@ params:
   - id: TM1037
     name: 流量调节异常超时退出
     byte_offset: 34
-    bit_offset: 5
+    bit_offset: 2
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1037
@@ -350,7 +350,7 @@ params:
   - id: TM1038
     name: 流量控制超差异常退出
     byte_offset: 34
-    bit_offset: 6
+    bit_offset: 1
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1038
@@ -359,7 +359,7 @@ params:
   - id: TM1039
     name: 阴极加热电流异常退出
     byte_offset: 34
-    bit_offset: 7
+    bit_offset: 0
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1039
@@ -368,7 +368,7 @@ params:
   - id: TM1040
     name: 阴极点火电压异常退出
     byte_offset: 35
-    bit_offset: 0
+    bit_offset: 7
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1040
@@ -377,7 +377,7 @@ params:
   - id: TM1041
     name: 阴极点火时间超时异常退出
     byte_offset: 35
-    bit_offset: 1
+    bit_offset: 6
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1041
@@ -386,7 +386,7 @@ params:
   - id: TM1042
     name: 阳极电流限流长时间维持退出
     byte_offset: 35
-    bit_offset: 2
+    bit_offset: 5
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1042
@@ -395,7 +395,7 @@ params:
   - id: TM1043
     name: 阳极低功率退出
     byte_offset: 35
-    bit_offset: 3
+    bit_offset: 4
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1043
@@ -404,7 +404,7 @@ params:
   - id: TM1044
     name: 阳极高功率退出
     byte_offset: 35
-    bit_offset: 4
+    bit_offset: 3
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1044
@@ -413,7 +413,7 @@ params:
   - id: TM1045
     name: 阳极电压异常退出
     byte_offset: 35
-    bit_offset: 5
+    bit_offset: 2
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1045
@@ -422,7 +422,7 @@ params:
   - id: TM1046
     name: 励磁电流异常退出
     byte_offset: 35
-    bit_offset: 6
+    bit_offset: 1
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1046
@@ -431,7 +431,7 @@ params:
   - id: TM1047
     name: 指令/时间到退出
     byte_offset: 35
-    bit_offset: 7
+    bit_offset: 0
     bit_length: 1
     type: enum
     enum_ref: tm1_tm1047

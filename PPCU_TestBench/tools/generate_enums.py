@@ -84,7 +84,7 @@ def write_files(all_enums):
             ptype = str(ws.cell(r, 6).value or "").lower()
             is_enum = "enum" in ptype
             if bl in (1,2,3,4,5,6,7):
-                lines.append("    bit_offset: " + str(bo % 8))
+                lines.append("    bit_offset: " + str(8 - (int(bo) % 8) - int(bl)))
                 lines.append("    bit_length: " + str(bl))
                 lines.append("    type: enum" if is_enum else "    type: uint8")
                 if is_enum:

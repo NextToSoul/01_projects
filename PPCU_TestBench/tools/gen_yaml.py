@@ -50,6 +50,7 @@ def gen(prefix):
         is_enum = "enum" in ptype
         if bl in (1,2,3,4,5,6,7):
             bib = int(bo_raw) % 8 if bo_raw is not None else 0
+            bib = 8 - bib - bl  # MSB (Excel) -> LSB (code) conversion
             lines.append("    bit_offset: " + str(bib))
             lines.append("    bit_length: " + str(bl))
             lines.append("    type: enum" if is_enum else "    type: uint8")

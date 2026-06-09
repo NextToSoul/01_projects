@@ -155,7 +155,7 @@ class TestInt:
         ]
         for rb, exp in cases:
             tm = bytearray(20)
-            tm[5] = rb >> 4
+            tm[5] = rb
             body = bytes(tm)
             resp = bytes([0x1A, 0xCF, 5, 0x25, 0, 1]) + (len(body) + 2).to_bytes(2, "big") + body
             resp += p.compute_checksum(resp[2:])
