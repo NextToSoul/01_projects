@@ -1,4 +1,4 @@
-tm_type: query
+tm_type: 查询包
 description: 查询包 参数表
 params:
 
@@ -150,6 +150,7 @@ params:
     endian: big
     decimal_places: 0
     unit: sec
+    range_max: 30
 
   - id: TM3016
     name: 双极减压调整时间
@@ -199,6 +200,7 @@ params:
     endian: big
     decimal_places: 0
     unit: sec
+    range_max: 30
 
   - id: TM3021
     name: PID比例常数
@@ -207,7 +209,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3022
     name: PID积分常数
@@ -216,7 +218,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3023
     name: PID微分常数
@@ -225,7 +227,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3024
     name: PID流量控制死区门限
@@ -234,7 +236,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3025
     name: ADRC观测器极点配置距离
@@ -243,7 +245,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3026
     name: ADRC扰动补偿
@@ -252,7 +254,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3027
     name: PID动态控制误差限幅
@@ -261,7 +263,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3028
     name: PID稳态控制误差限幅
@@ -270,7 +272,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3029
     name: 阳极电流闭环的控制量修正系数
@@ -279,7 +281,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3030
     name: 阳极流量控制时延周期数
@@ -288,7 +291,7 @@ params:
     type: uint32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3031
     name: 阳极电流IIR滤波器系数a1
@@ -297,7 +300,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3032
     name: 阳极电流IIR滤波器系数a2
@@ -306,7 +310,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3033
     name: 阳极电流IIR滤波器系数a3
@@ -315,7 +320,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3034
     name: 阳极电流IIR滤波器系数a4
@@ -324,7 +330,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3035
     name: 阳极电流IIR滤波器系数a5
@@ -333,7 +340,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3036
     name: 阳极电流IIR滤波器系数a6
@@ -342,7 +350,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3037
     name: 阳极电流IIR滤波器系数a7
@@ -351,7 +360,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3038
     name: 阳极电流IIR滤波器系数a8
@@ -360,7 +370,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3039
     name: 阳极电流IIR滤波器系数a9
@@ -369,7 +380,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3040
     name: 压传 IIR滤波器系数a1
@@ -378,7 +390,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3041
     name: 压传 IIR滤波器系数a2
@@ -387,7 +399,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3042
     name: 压传 IIR滤波器系数a3
@@ -396,7 +408,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3043
     name: 压传 IIR滤波器系数a4
@@ -405,7 +417,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3044
     name: 压传 IIR滤波器系数a5
@@ -414,7 +426,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3045
     name: 压传 IIR滤波器系数a6
@@ -423,7 +435,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3046
     name: 压传 IIR滤波器系数a7
@@ -432,7 +444,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3047
     name: 压传 IIR滤波器系数a8
@@ -441,7 +453,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3048
     name: 压传 IIR滤波器系数a9
@@ -450,7 +462,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3049
     name: 比例阀IIR滤波器系数a1
@@ -459,7 +471,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3050
     name: 比例阀IIR滤波器系数a2
@@ -468,7 +480,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3051
     name: 比例阀IIR滤波器系数a3
@@ -477,7 +489,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3052
     name: 比例阀IIR滤波器系数a4
@@ -486,7 +498,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3053
     name: 比例阀IIR滤波器系数a5
@@ -495,7 +507,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3054
     name: 比例阀IIR滤波器系数a6
@@ -504,7 +516,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3055
     name: 比例阀IIR滤波器系数a7
@@ -513,7 +525,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3056
     name: 比例阀IIR滤波器系数a8
@@ -522,7 +534,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3057
     name: 比例阀IIR滤波器系数a9
@@ -531,7 +543,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3058
     name: 流量-电压标定斜率b（低压传感器1）
@@ -540,7 +552,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3059
     name: 流量-电压标定截距a （低压传感器1）
@@ -549,7 +561,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3060
     name: 流量-开环控制电流标定斜率b (比例阀)
@@ -558,7 +570,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3061
     name: 流量-开环控制电流标定截距a (比例阀)
@@ -567,7 +580,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3062
     name: 阳极电流-流量标定斜率b
@@ -576,7 +590,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3063
     name: 阳极电流-流量标定截距a
@@ -585,7 +600,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3064
     name: 低压压传校正系数
@@ -594,7 +610,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3065
     name: 电流维持误差门限
@@ -603,7 +619,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3066
     name: 电压维持误差门限
@@ -612,7 +629,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3067
     name: 点火成功后触持电流判读误差门限
@@ -621,7 +638,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3068
     name: 开环阶段流量校正系数
@@ -630,7 +648,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3069
     name: 比例阀控制压力稳态误差系数
@@ -639,7 +657,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3070
     name: 压传失配阈值
@@ -648,7 +666,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
 
   - id: TM3071
     name: 阳极点火电流异常下限
@@ -657,7 +675,8 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
+    range_max: 30
 
   - id: TM3072
     name: 系统总功率上限
@@ -666,7 +685,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: W
 
   - id: TM3073
@@ -676,7 +695,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: V
 
   - id: TM3074
@@ -686,7 +705,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mg/s
 
   - id: TM3075
@@ -696,8 +715,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3076
     name: 阴极加热电流0.8A
@@ -706,8 +726,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3077
     name: 阴极加热电流1.5A
@@ -716,8 +737,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3078
     name: 阴极加热电流2.0A
@@ -726,8 +748,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3079
     name: 阴极加热电流2.5A
@@ -736,8 +759,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3080
     name: 阴极加热电流2.9A
@@ -746,8 +770,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3081
     name: 阴极加热电流3.2A
@@ -756,8 +781,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3082
     name: 阴极加热电流3.5A
@@ -766,8 +792,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3083
     name: 阳极稳态电压
@@ -776,7 +803,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: V
 
   - id: TM3084
@@ -786,7 +813,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: V
 
   - id: TM3085
@@ -796,8 +823,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3086
     name: 阴极冲洗流量值
@@ -806,7 +834,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mg/s
 
   - id: TM3087
@@ -816,8 +844,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mA
+    range_max: 30
 
   - id: TM3088
     name: 比例阀控制限幅电流
@@ -826,8 +855,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mA
+    range_max: 30
 
   - id: TM3089
     name: 阳极电流上限值
@@ -836,8 +866,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: A
+    range_max: 30
 
   - id: TM3090
     name: 目标流量控制误差值
@@ -846,7 +877,7 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mg/s
 
   - id: TM3091
@@ -856,8 +887,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mg/s
+    range_max: 30
 
   - id: TM3092
     name: 触持电流
@@ -866,8 +898,9 @@ params:
     type: float32
     scale: 1.0
     endian: big
-    decimal_places: 0
+    decimal_places: 6
     unit: mg/s
+    range_max: 30
 
   - id: TM3093
     name: 压传前后两拍超差门限
@@ -876,7 +909,7 @@ params:
     type: uint16
     scale: 0.001
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: V
 
   - id: TM3094
@@ -886,8 +919,9 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: A
+    range_max: 30
 
   - id: TM3095
     name: 比例阀开环控制电流
@@ -896,8 +930,9 @@ params:
     type: uint16
     scale: 0.02
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: mA
+    range_max: 30
 
   - id: TM3096
     name: 比例阀流量调节时间系数
@@ -906,7 +941,7 @@ params:
     type: uint16
     scale: 0.001
     endian: big
-    decimal_places: 0
+    decimal_places: 2
 
   - id: TM3097
     name: 压传常值故障诊断时间限
@@ -925,8 +960,9 @@ params:
     type: uint16
     scale: 0.0005
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: A
+    range_max: 30
 
   - id: TM3099
     name: 比例阀输出控制电流与回采电流误差系数
@@ -935,7 +971,8 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
+    range_max: 30
 
   - id: TM3100
     name: 压力测量误差阈值
@@ -944,7 +981,7 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: V
 
   - id: TM3101
@@ -964,7 +1001,7 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: V
 
   - id: TM3103
@@ -974,7 +1011,7 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
 
   - id: TM3104
     name: 比例阀上限阈值设置
