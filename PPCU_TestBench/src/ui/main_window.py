@@ -208,6 +208,16 @@ class MainWindow(QMainWindow):
         proj_dir = Path(__file__).resolve().parent.parent.parent / "protocol_defs" / "nebula_ppcu"
         import shutil
         results = import_excel(filepath, out_dir)
+        import time
+        bk = None
+        existing = list(proj_dir.glob("telemetry_*.yaml")) + [proj_dir / "enums.yaml"]
+        existing = [f for f in existing if f.is_file()]
+        if existing:
+            ts = time.strftime("%Y%m%d_%H%M%S")
+            bk = os.path.join(tempfile.gettempdir(), "ppcu_backup_" + ts)
+            os.mkdir(bk)
+            for f in existing:
+                shutil.copy2(str(f), os.path.join(bk, f.name))
         ok = 0
         for t, c in results:
             try:
@@ -231,6 +241,8 @@ class MainWindow(QMainWindow):
             msg += '  Copy-Item "$env:TEMP\\telemetry_*.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
             msg += '  Copy-Item "$env:TEMP\\enums.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
         msg += "\u91cd\u542f\u7a0b\u5e8f\u540e\u751f\u6548"
+        if bk:
+            msg += "\n\u5907\u4efd: " + bk
         QMessageBox.information(self, "\u5bfc\u5165\u5b8c\u6210", msg)
 
     @asyncSlot()
