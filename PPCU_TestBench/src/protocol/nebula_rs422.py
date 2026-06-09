@@ -101,7 +101,7 @@ class NebulaRS422Protocol(ProtocolInterface):
             return Response(raw=raw, parsed=False)
 
         # 应答数据域（不含校验）: 从字节 8 开始，共 data_len - 2 字节
-        body = raw[8 : 8 + data_len - 2]
+        body = raw[8 : -2]
 
         if tm_type in ("tm1", "tm2", "query"):
             decoded = self.decode_telemetry(body, tm_type)

@@ -41,7 +41,7 @@ params:
   - id: TM1005
     name: 工作模式字
     byte_offset: 5
-    bit_offset: 0
+    bit_offset: 4
     bit_length: 4
     type: enum
     enum_ref: tm1_tm1005
@@ -50,7 +50,7 @@ params:
   - id: TM1006
     name: 工作子模式字
     byte_offset: 5
-    bit_offset: 4
+    bit_offset: 0
     bit_length: 4
     type: enum
     enum_ref: tm1_tm1006
