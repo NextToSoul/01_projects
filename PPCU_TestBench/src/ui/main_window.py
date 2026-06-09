@@ -205,13 +205,31 @@ class MainWindow(QMainWindow):
         sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
         from tools.import_from_excel import import_excel
         out_dir = tempfile.gettempdir()
+        proj_dir = Path(__file__).resolve().parent.parent.parent / "protocol_defs" / "nebula_ppcu"
+        import shutil
         results = import_excel(filepath, out_dir)
-        msg = "\u5bfc\u5165\u5b8c\u6210: " + str(len(results)) + " \u4e2a\u9065\u6d4b\u5305\n"
+        ok = 0
         for t, c in results:
-            msg += "  " + t + ": " + str(c) + " \u53c2\u6570\n"
-        msg += "\n\u8bf7\u6267\u884c\u590d\u5236\u547d\u4ee4\uff1a\n"
-        msg += '  Copy-Item "$env:TEMP\\telemetry_*.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
-        msg += '  Copy-Item "$env:TEMP\\enums.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
+            try:
+                shutil.copy2(os.path.join(out_dir, "telemetry_" + t + ".yaml"),
+                str(proj_dir / ("telemetry_" + t + ".yaml")))
+                ok += 1
+            except:
+                pass
+        try:
+            shutil.copy2(os.path.join(out_dir, "enums.yaml"),
+                        str(proj_dir / "enums.yaml"))
+        except:
+            pass
+        msg = "\u5bfc\u5165\u5b8c\u6210: " + str(len(results)) + " \u4e2a\u9065\u6d4b\u5305\n"
+        if ok == len(results):
+            msg += "\n\u5df2\u81ea\u52a8\u590d\u5236\u5230\u9879\u76ee\u76ee\u5f55\uff0c"
+        else:
+            for t, c in results:
+                msg += "  " + t + ": " + str(c) + " \u53c2\u6570\n"
+            msg += "\n\u81ea\u52a8\u590d\u5236\u5931\u8d25(" + str(ok) + "/" + str(len(results)) + ")\uff0c\u8bf7\u624b\u52a8:\n"
+            msg += '  Copy-Item "$env:TEMP\\telemetry_*.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
+            msg += '  Copy-Item "$env:TEMP\\enums.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
         msg += "\u91cd\u542f\u7a0b\u5e8f\u540e\u751f\u6548"
         QMessageBox.information(self, "\u5bfc\u5165\u5b8c\u6210", msg)
 
