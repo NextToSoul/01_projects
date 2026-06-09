@@ -3,6 +3,8 @@ import os, sys, tempfile, openpyxl
 
 def sheet_to_tm_type(name):
     name = name.strip().split(" ", 1)[0]
+    if name == chr(26597)+chr(35810)+chr(21253):  # 查询包 -> query
+        return "query"
     for s in [chr(34920), chr(21442), chr(36947)]:  # 表, 参, 遥
         if name.endswith(s): name = name[:-1]
     return name.lower().strip()
