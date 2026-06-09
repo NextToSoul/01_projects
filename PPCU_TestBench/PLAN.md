@@ -483,9 +483,12 @@ teardown:
 | src/ui/components/telemetry_table.py | 参数名/原始值/工程量/单位/状态 |
 | src/ui/components/message_log.py | 方向色标 + HEX/文本 |
 | src/comms/tcp_client.py | TCP keepalive (空闲超时保护) |
+| src/ui/main_window.py | 文件菜单: 导入遥测定义 (QFileDialog) |
+| tools/import_from_excel.py | 通用 Excel 导入 (支持任意 sheet 名动态扩展) |
 
 **交付**: 统一单页布局无需切换标签页。连接与指令分离，手动触发 TM1/TM2 独立
 单次 + 同时轮询，查询包单次查询。TCP keepalive 防止串口盒空闲断连。
+**动态导入**: 文件菜单 → 导入遥测定义，支持任意数量遥测包类型的 Excel 模板。
 
 ### M3 — 测试引擎 + 用例执行
 

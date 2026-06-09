@@ -5,9 +5,11 @@ from pathlib import Path
 from PySide6.QtCore import QTimer
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
+    QFileDialog,
     QHBoxLayout,
     QLabel,
     QMainWindow,
+    QMessageBox,
     QSplitter,
     QStatusBar,
     QVBoxLayout,
@@ -83,6 +85,12 @@ class MainWindow(QMainWindow):
         self._timer.timeout.connect(self._poll)
         self._timer.setInterval(1000)
 
+        # Menu bar: File > Import Telemetry
+        menubar = self.menuBar()
+        file_menu = menubar.addMenu("\u6587\u4ef6")
+        act = file_menu.addAction("\u5bfc\u5165\u9065\u6d4b\u5b9a\u4e49")
+        act.triggered.connect(self._on_import_telemetry)
+ 
     def closeEvent(self, event):
         self._timer.stop()
         for t in self._poll_active:
@@ -185,6 +193,27 @@ class MainWindow(QMainWindow):
         for t in self._poll_active:
             self._poll_active[t] = False
             self._busy[t] = False
+ 
+    @asyncSlot()
+    async def _on_import_telemetry(self):
+        filepath, _ = QFileDialog.getOpenFileName(
+            self, "\u9009\u62e9\u9065\u6d4b\u5b9a\u4e49\u6587\u4ef6",
+            "", "Excel Files (*.xlsx)")
+        if not filepath:
+            return
+        import os, sys, tempfile
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
+        from tools.import_from_excel import import_excel
+        out_dir = tempfile.gettempdir()
+        results = import_excel(filepath, out_dir)
+        msg = "\u5bfc\u5165\u5b8c\u6210: " + str(len(results)) + " \u4e2a\u9065\u6d4b\u5305\n"
+        for t, c in results:
+            msg += "  " + t + ": " + str(c) + " \u53c2\u6570\n"
+        msg += "\n\u8bf7\u6267\u884c\u590d\u5236\u547d\u4ee4\uff1a\n"
+        msg += '  Copy-Item "$env:TEMP\\telemetry_*.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
+        msg += '  Copy-Item "$env:TEMP\\enums.yaml" .\\protocol_defs\\nebula_ppcu\\ -Force\n'
+        msg += "\u91cd\u542f\u7a0b\u5e8f\u540e\u751f\u6548"
+        QMessageBox.information(self, "\u5bfc\u5165\u5b8c\u6210", msg)
 
     @asyncSlot()
     async def _poll(self) -> None:
