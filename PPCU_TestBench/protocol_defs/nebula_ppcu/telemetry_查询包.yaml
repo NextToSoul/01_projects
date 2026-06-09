@@ -1,0 +1,1033 @@
+tm_type: 查询包
+description: 查询包 参数表
+params:
+
+  - id: TM3001
+    name: 阴极点火时长上限
+    byte_offset: 0
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3002
+    name: 阳极点火时长上限
+    byte_offset: 4
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3003
+    name: 阴极激活点火长上限
+    byte_offset: 8
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3004
+    name: 管路排气预处理时间
+    byte_offset: 12
+    byte_length: 4
+    type: uint32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+
+  - id: TM3005
+    name: 推力器启动固定时长
+    byte_offset: 16
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3006
+    name: 流量固定开环输出稳定时间
+    byte_offset: 20
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3007
+    name: 阴极除气时间
+    byte_offset: 24
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3008
+    name: 阴极0.8A加热时间
+    byte_offset: 28
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3009
+    name: 阴极1.5A加热时间
+    byte_offset: 32
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3010
+    name: 阴极2.0A加热时间
+    byte_offset: 36
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3011
+    name: 阴极2.5A加热时间
+    byte_offset: 40
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3012
+    name: 阴极2.9A加热时间
+    byte_offset: 44
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3013
+    name: 阴极3.2A加热时间
+    byte_offset: 48
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3014
+    name: 阴极3.5A加热时间
+    byte_offset: 52
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3015
+    name: 阳极电流闭环前的开环时间
+    byte_offset: 56
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+    range_max: 30
+
+  - id: TM3016
+    name: 双极减压调整时间
+    byte_offset: 60
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3017
+    name: 二次点火误差时间阈值
+    byte_offset: 64
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+
+  - id: TM3018
+    name: 点火完毕阴极除气整秒计时器
+    byte_offset: 68
+    byte_length: 4
+    type: uint32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3019
+    name: 二次点火最大点火次数值
+    byte_offset: 72
+    byte_length: 4
+    type: uint32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3020
+    name: 阳极电流熄弧时间阈值
+    byte_offset: 76
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+    range_max: 30
+
+  - id: TM3021
+    name: PID比例常数
+    byte_offset: 80
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3022
+    name: PID积分常数
+    byte_offset: 84
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3023
+    name: PID微分常数
+    byte_offset: 88
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3024
+    name: PID流量控制死区门限
+    byte_offset: 92
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3025
+    name: ADRC观测器极点配置距离
+    byte_offset: 96
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3026
+    name: ADRC扰动补偿
+    byte_offset: 100
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3027
+    name: PID动态控制误差限幅
+    byte_offset: 104
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3028
+    name: PID稳态控制误差限幅
+    byte_offset: 108
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3029
+    name: 阳极电流闭环的控制量修正系数
+    byte_offset: 112
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3030
+    name: 阳极流量控制时延周期数
+    byte_offset: 116
+    byte_length: 4
+    type: uint32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3031
+    name: 阳极电流IIR滤波器系数a1
+    byte_offset: 120
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3032
+    name: 阳极电流IIR滤波器系数a2
+    byte_offset: 124
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3033
+    name: 阳极电流IIR滤波器系数a3
+    byte_offset: 128
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3034
+    name: 阳极电流IIR滤波器系数a4
+    byte_offset: 132
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3035
+    name: 阳极电流IIR滤波器系数a5
+    byte_offset: 136
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3036
+    name: 阳极电流IIR滤波器系数a6
+    byte_offset: 140
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3037
+    name: 阳极电流IIR滤波器系数a7
+    byte_offset: 144
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3038
+    name: 阳极电流IIR滤波器系数a8
+    byte_offset: 148
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3039
+    name: 阳极电流IIR滤波器系数a9
+    byte_offset: 152
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3040
+    name: 压传 IIR滤波器系数a1
+    byte_offset: 156
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3041
+    name: 压传 IIR滤波器系数a2
+    byte_offset: 160
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3042
+    name: 压传 IIR滤波器系数a3
+    byte_offset: 164
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3043
+    name: 压传 IIR滤波器系数a4
+    byte_offset: 168
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3044
+    name: 压传 IIR滤波器系数a5
+    byte_offset: 172
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3045
+    name: 压传 IIR滤波器系数a6
+    byte_offset: 176
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3046
+    name: 压传 IIR滤波器系数a7
+    byte_offset: 180
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3047
+    name: 压传 IIR滤波器系数a8
+    byte_offset: 184
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3048
+    name: 压传 IIR滤波器系数a9
+    byte_offset: 188
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3049
+    name: 比例阀IIR滤波器系数a1
+    byte_offset: 192
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3050
+    name: 比例阀IIR滤波器系数a2
+    byte_offset: 196
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3051
+    name: 比例阀IIR滤波器系数a3
+    byte_offset: 200
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3052
+    name: 比例阀IIR滤波器系数a4
+    byte_offset: 204
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3053
+    name: 比例阀IIR滤波器系数a5
+    byte_offset: 208
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3054
+    name: 比例阀IIR滤波器系数a6
+    byte_offset: 212
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3055
+    name: 比例阀IIR滤波器系数a7
+    byte_offset: 216
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3056
+    name: 比例阀IIR滤波器系数a8
+    byte_offset: 220
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3057
+    name: 比例阀IIR滤波器系数a9
+    byte_offset: 224
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3058
+    name: 流量-电压标定斜率b（低压传感器1）
+    byte_offset: 228
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3059
+    name: 流量-电压标定截距a （低压传感器1）
+    byte_offset: 232
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3060
+    name: 流量-开环控制电流标定斜率b (比例阀)
+    byte_offset: 236
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3061
+    name: 流量-开环控制电流标定截距a (比例阀)
+    byte_offset: 240
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3062
+    name: 阳极电流-流量标定斜率b
+    byte_offset: 244
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3063
+    name: 阳极电流-流量标定截距a
+    byte_offset: 248
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3064
+    name: 低压压传校正系数
+    byte_offset: 252
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3065
+    name: 电流维持误差门限
+    byte_offset: 256
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3066
+    name: 电压维持误差门限
+    byte_offset: 260
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3067
+    name: 点火成功后触持电流判读误差门限
+    byte_offset: 264
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3068
+    name: 开环阶段流量校正系数
+    byte_offset: 268
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3069
+    name: 比例阀控制压力稳态误差系数
+    byte_offset: 272
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3070
+    name: 压传失配阈值
+    byte_offset: 276
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+
+  - id: TM3071
+    name: 阳极点火电流异常下限
+    byte_offset: 280
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    range_max: 30
+
+  - id: TM3072
+    name: 系统总功率上限
+    byte_offset: 284
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: W
+
+  - id: TM3073
+    name: 阴极点火电压故障电压判据
+    byte_offset: 288
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: V
+
+  - id: TM3074
+    name: 流量控制目标值
+    byte_offset: 292
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mg/s
+
+  - id: TM3075
+    name: 阳极点火成功电流有效值
+    byte_offset: 296
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3076
+    name: 阴极加热电流0.8A
+    byte_offset: 300
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3077
+    name: 阴极加热电流1.5A
+    byte_offset: 304
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3078
+    name: 阴极加热电流2.0A
+    byte_offset: 308
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3079
+    name: 阴极加热电流2.5A
+    byte_offset: 312
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3080
+    name: 阴极加热电流2.9A
+    byte_offset: 316
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3081
+    name: 阴极加热电流3.2A
+    byte_offset: 320
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3082
+    name: 阴极加热电流3.5A
+    byte_offset: 324
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3083
+    name: 阳极稳态电压
+    byte_offset: 328
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: V
+
+  - id: TM3084
+    name: 阳极暂态电压
+    byte_offset: 332
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: V
+
+  - id: TM3085
+    name: 励磁电流
+    byte_offset: 336
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3086
+    name: 阴极冲洗流量值
+    byte_offset: 340
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mg/s
+
+  - id: TM3087
+    name: 比例阀开阀动作电流
+    byte_offset: 344
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mA
+    range_max: 30
+
+  - id: TM3088
+    name: 比例阀控制限幅电流
+    byte_offset: 348
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mA
+    range_max: 30
+
+  - id: TM3089
+    name: 阳极电流上限值
+    byte_offset: 352
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: A
+    range_max: 30
+
+  - id: TM3090
+    name: 目标流量控制误差值
+    byte_offset: 356
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mg/s
+
+  - id: TM3091
+    name: 励磁电流下限值
+    byte_offset: 360
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mg/s
+    range_max: 30
+
+  - id: TM3092
+    name: 触持电流
+    byte_offset: 364
+    byte_length: 4
+    type: float32
+    scale: 1.0
+    endian: big
+    decimal_places: 6
+    unit: mg/s
+    range_max: 30
+
+  - id: TM3093
+    name: 压传前后两拍超差门限
+    byte_offset: 368
+    byte_length: 2
+    type: uint16
+    scale: 0.001
+    endian: big
+    decimal_places: 2
+    unit: V
+
+  - id: TM3094
+    name: 阳极电流前后两拍的电流超差极限值
+    byte_offset: 370
+    byte_length: 2
+    type: uint16
+    scale: 0.01
+    endian: big
+    decimal_places: 2
+    unit: A
+    range_max: 30
+
+  - id: TM3095
+    name: 比例阀开环控制电流
+    byte_offset: 372
+    byte_length: 2
+    type: uint16
+    scale: 0.02
+    endian: big
+    decimal_places: 2
+    unit: mA
+    range_max: 30
+
+  - id: TM3096
+    name: 比例阀流量调节时间系数
+    byte_offset: 374
+    byte_length: 2
+    type: uint16
+    scale: 0.001
+    endian: big
+    decimal_places: 2
+
+  - id: TM3097
+    name: 压传常值故障诊断时间限
+    byte_offset: 376
+    byte_length: 2
+    type: uint16
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: sec
+
+  - id: TM3098
+    name: 励磁电流误差阈值
+    byte_offset: 378
+    byte_length: 2
+    type: uint16
+    scale: 0.0005
+    endian: big
+    decimal_places: 2
+    unit: A
+    range_max: 30
+
+  - id: TM3099
+    name: 比例阀输出控制电流与回采电流误差系数
+    byte_offset: 380
+    byte_length: 2
+    type: uint16
+    scale: 0.01
+    endian: big
+    decimal_places: 2
+    range_max: 30
+
+  - id: TM3100
+    name: 压力测量误差阈值
+    byte_offset: 382
+    byte_length: 2
+    type: uint16
+    scale: 0.01
+    endian: big
+    decimal_places: 2
+    unit: V
+
+  - id: TM3101
+    name: 心跳信号周期时间(整秒)
+    byte_offset: 384
+    byte_length: 2
+    type: uint16
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: s
+
+  - id: TM3102
+    name: 压力传感器最大测量范围
+    byte_offset: 386
+    byte_length: 2
+    type: uint16
+    scale: 0.01
+    endian: big
+    decimal_places: 2
+    unit: V
+
+  - id: TM3103
+    name: 励磁校正系数
+    byte_offset: 388
+    byte_length: 2
+    type: uint16
+    scale: 0.01
+    endian: big
+    decimal_places: 2
+
+  - id: TM3104
+    name: 比例阀上限阈值设置
+    byte_offset: 390
+    byte_length: 2
+    type: uint16
+    scale: 1.0
+    endian: big
+    decimal_places: 0
+    unit: mA
+
+  - id: TM3105
+    name: 保留
+    byte_offset: 392
+    byte_length: 2
+    type: uint16
+    scale: 1.0
+    endian: big
+    decimal_places: 0

@@ -131,9 +131,10 @@ class NebulaRS422Protocol(ProtocolInterface):
                     unit = "-"
                     status = "normal"
                 else:
-                    eng_value = round(float(raw_value) * p.scale, p.decimal_places)
+                    numeric_value = float(raw_value) * p.scale
+                    eng_value = f"{numeric_value:.{p.decimal_places}f}"
                     unit = p.unit
-                    status = self._check_limits(eng_value, p)
+                    status = self._check_limits(numeric_value, p)
 
                 result[p.id] = TelemetryValue(
                     param_id=p.id,

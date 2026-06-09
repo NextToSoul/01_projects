@@ -10,6 +10,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 255
 
   - id: TM2002
     name: 软件启动区
@@ -29,6 +31,8 @@ params:
     endian: big
     decimal_places: 0
     unit: s
+    range_min: 0
+    range_max: 65535
 
   - id: TM2004
     name: 总有效点火时长
@@ -39,6 +43,8 @@ params:
     endian: big
     decimal_places: 0
     unit: min
+    range_min: 0
+    range_max: 16777215
 
   - id: TM2005
     name: 阴极加热时间
@@ -49,6 +55,8 @@ params:
     endian: big
     decimal_places: 0
     unit: s
+    range_min: 0
+    range_max: 65535
 
   - id: TM2006
     name: 比例阀P1回采控制电流
@@ -57,8 +65,10 @@ params:
     type: uint16
     scale: 0.0033333333
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: mA
+    range_min: 0
+    range_max: 60
 
   - id: TM2007
     name: 低压传感器LP1压力滤波值
@@ -67,8 +77,10 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: kpa
+    range_min: -10
+    range_max: 50
 
   - id: TM2008
     name: 高压传感器HP压力滤波值
@@ -77,8 +89,10 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: Mpa
+    range_min: -1
+    range_max: 5
 
   - id: TM2009
     name: 比例阀/双极减压控制误差
@@ -87,8 +101,10 @@ params:
     type: uint16
     scale: 0.0001538462
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: A/V
+    range_min: -1
+    range_max: 1
 
   - id: TM2010
     name: 阳极电流变化率估计值
@@ -97,8 +113,10 @@ params:
     type: uint16
     scale: 0.002
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: A/sec
+    range_min: -40
+    range_max: 40
 
   - id: TM2011
     name: 比例阀增量控制电流
@@ -107,8 +125,10 @@ params:
     type: uint16
     scale: 0.001
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: A/sec
+    range_min: -20
+    range_max: 20
 
   - id: TM2012
     name: 阳极电源输出电流滤波值
@@ -117,7 +137,9 @@ params:
     type: uint16
     scale: 0.001
     endian: big
-    decimal_places: 0
+    decimal_places: 2
+    range_min: -1
+    range_max: 5
 
   - id: TM2013
     name: 稳态下压力标定流量误差值
@@ -126,7 +148,7 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
     unit: mg/s
 
   - id: TM2014
@@ -136,7 +158,7 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
 
   - id: TM2015
     name: PPCU复位次数
@@ -146,6 +168,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2016
     name: 保留
@@ -155,6 +179,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2017
     name: 推力器启动时间
@@ -165,6 +191,8 @@ params:
     endian: big
     decimal_places: 0
     unit: s
+    range_min: 0
+    range_max: 65535
 
   - id: TM2018
     name: 保留
@@ -174,6 +202,7 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
 
   - id: TM2019
     name: 推力器点火累计开机次数
@@ -184,6 +213,8 @@ params:
     endian: big
     decimal_places: 0
     unit: 次
+    range_min: 0
+    range_max: 1
 
   - id: TM2020
     name: 二次点火剩余时间
@@ -194,6 +225,8 @@ params:
     endian: big
     decimal_places: 0
     unit: sec
+    range_min: 0
+    range_max: 4294967295
 
   - id: TM2021
     name: 保留
@@ -210,8 +243,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2022
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2022
 
   - id: TM2023
     name: 流量控制模式
@@ -219,8 +254,10 @@ params:
     bit_offset: 5
     bit_length: 2
     type: enum
-    enum_ref: tm2_tm2023
     decimal_places: 0
+    range_min: 0
+    range_max: 2
+    enum_ref: tm2_tm2023
 
   - id: TM2024
     name: 控制策略类型
@@ -228,8 +265,10 @@ params:
     bit_offset: 3
     bit_length: 2
     type: enum
-    enum_ref: tm2_tm2024
     decimal_places: 0
+    range_min: 0
+    range_max: 2
+    enum_ref: tm2_tm2024
 
   - id: TM2025
     name: 励磁电源电流有效性标志
@@ -237,8 +276,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2025
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2025
 
   - id: TM2026
     name: 点火电源电压有效性标志
@@ -246,8 +287,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2026
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2026
 
   - id: TM2027
     name: 阳极电源有效性标志
@@ -255,8 +298,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2027
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2027
 
   - id: TM2028
     name: 阴极加热电源电流有效性标志
@@ -264,8 +309,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2028
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2028
 
   - id: TM2029
     name: PPCU电源断电退出
@@ -273,8 +320,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2029
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2029
 
   - id: TM2030
     name: 电源允许故障诊断标志
@@ -282,8 +331,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2030
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2030
 
   - id: TM2031
     name: 电源可用性标志
@@ -291,8 +342,10 @@ params:
     bit_offset: 4
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2031
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2031
 
   - id: TM2032
     name: 低压传感器数据有效标志
@@ -300,8 +353,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2032
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2032
 
   - id: TM2033
     name: 贮供流量单元使能/屏蔽状态
@@ -309,8 +364,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2033
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2033
 
   - id: TM2034
     name: 比例阀使能状态
@@ -318,8 +375,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2034
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2034
 
   - id: TM2035
     name: 比例阀有效性标志
@@ -327,8 +386,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2035
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2035
 
   - id: TM2036
     name: 低压传感器使能状态
@@ -336,8 +397,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2036
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2036
 
   - id: TM2037
     name: 推力器固定启动时间超时与否
@@ -345,8 +408,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2037
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2037
 
   - id: TM2038
     name: 二次点火使能状态
@@ -354,8 +419,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2038
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2038
 
   - id: TM2039
     name: 压传与阳极电流失配
@@ -363,8 +430,10 @@ params:
     bit_offset: 4
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2039
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2039
 
   - id: TM2040
     name: 保留
@@ -372,8 +441,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2040
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2040
 
   - id: TM2041
     name: 进入二次点火故障类型
@@ -381,8 +452,10 @@ params:
     bit_offset: 1
     bit_length: 2
     type: enum
-    enum_ref: tm2_tm2041
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2041
 
   - id: TM2042
     name: 正常点火/二次点火
@@ -390,8 +463,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2042
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2042
 
   - id: TM2043
     name: 二次点火次数
@@ -400,14 +475,19 @@ params:
     bit_length: 3
     type: uint8
     decimal_places: 0
+    range_min: 0
+    range_max: 1
 
   - id: TM2044
     name: 自锁阀未开退出
     byte_offset: 46
     bit_offset: 4
     bit_length: 1
-    type: uint8
+    type: enum
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2044
 
   - id: TM2045
     name: 自锁阀自主开关
@@ -415,8 +495,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2045
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2045
 
   - id: TM2046
     name: 看门狗使能状态
@@ -424,8 +506,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2046
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2046
 
   - id: TM2047
     name: 允许对当前下位机软件更新
@@ -433,8 +517,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2047
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2047
 
   - id: TM2048
     name: 保留
@@ -442,8 +528,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2048
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2048
 
   - id: TM2049
     name: 保留
@@ -451,8 +539,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2049
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2049
 
   - id: TM2050
     name: 比例阀固定开环控制使能标志
@@ -460,8 +550,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2050
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2050
 
   - id: TM2051
     name: 固定控制固定开环控制标志
@@ -469,8 +561,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2051
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2051
 
   - id: TM2052
     name: 保留
@@ -478,8 +572,10 @@ params:
     bit_offset: 4
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2052
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2052
 
   - id: TM2053
     name: 保留
@@ -487,8 +583,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2053
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2053
 
   - id: TM2054
     name: 阳极电流自主闭环开关
@@ -496,8 +594,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2054
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2054
 
   - id: TM2055
     name: 微分开关
@@ -505,8 +605,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2055
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2055
 
   - id: TM2056
     name: 流量控制异常退出
@@ -514,8 +616,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2056
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2056
 
   - id: TM2057
     name: 自锁阀自主开关序号
@@ -523,8 +627,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2057
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2057
 
   - id: TM2058
     name: 比例阀回采电流误差异常
@@ -532,8 +638,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2058
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2058
 
   - id: TM2059
     name: 比例阀流量调节控制异常
@@ -541,8 +649,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2059
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2059
 
   - id: TM2060
     name: 比例阀工作状态
@@ -550,8 +660,10 @@ params:
     bit_offset: 4
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2060
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2060
 
   - id: TM2061
     name: 触持电源自主关闭
@@ -559,8 +671,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2061
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2061
 
   - id: TM2062
     name: 阳极电源发生过流保护
@@ -568,8 +682,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2062
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2062
 
   - id: TM2063
     name: 保留
@@ -577,8 +693,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2063
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2063
 
   - id: TM2064
     name: 保留
@@ -586,8 +704,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2064
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2064
 
   - id: TM2065
     name: 引入积分控制项
@@ -595,8 +715,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2065
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2065
 
   - id: TM2066
     name: 允许比例阀控制输出
@@ -604,8 +726,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2066
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2066
 
   - id: TM2067
     name: 保留
@@ -613,8 +737,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2067
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2067
 
   - id: TM2068
     name: 保留
@@ -624,6 +750,8 @@ params:
     type: uint8
     decimal_places: 0
     unit: 条
+    range_min: 0
+    range_max: 1
 
   - id: TM2069
     name: 阳极电流控制使能标志
@@ -631,8 +759,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2069
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2069
 
   - id: TM2070
     name: 扩张状态滤波发散
@@ -640,8 +770,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2070
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2070
 
   - id: TM2071
     name: 电磁阀1使能/屏蔽
@@ -649,8 +781,10 @@ params:
     bit_offset: 7
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2071
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2071
 
   - id: TM2072
     name: 电磁阀2使能/屏蔽
@@ -658,8 +792,10 @@ params:
     bit_offset: 6
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2072
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2072
 
   - id: TM2073
     name: 电磁阀3使能/屏蔽
@@ -667,8 +803,10 @@ params:
     bit_offset: 5
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2073
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2073
 
   - id: TM2074
     name: 电磁阀1驱动主备状态
@@ -676,8 +814,10 @@ params:
     bit_offset: 4
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2074
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2074
 
   - id: TM2075
     name: 电磁阀2驱动主备状态
@@ -685,8 +825,10 @@ params:
     bit_offset: 3
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2075
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2075
 
   - id: TM2076
     name: 电磁阀3驱动主备状态
@@ -694,8 +836,10 @@ params:
     bit_offset: 2
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2076
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2076
 
   - id: TM2077
     name: 工作子模式异常退出
@@ -703,8 +847,10 @@ params:
     bit_offset: 1
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2077
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2077
 
   - id: TM2078
     name: 励磁电流步长加载使能/屏蔽
@@ -712,8 +858,10 @@ params:
     bit_offset: 0
     bit_length: 1
     type: enum
-    enum_ref: tm2_tm2078
     decimal_places: 0
+    range_min: 0
+    range_max: 1
+    enum_ref: tm2_tm2078
 
   - id: TM2079
     name: 本次阳极点火设置时长
@@ -723,6 +871,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 4294967295
 
   - id: TM2080
     name: 阴极点火电压
@@ -732,6 +882,8 @@ params:
     scale: 0.0055555556
     endian: big
     decimal_places: 2
+    range_min: 0
+    range_max: 65535
 
   - id: TM2081
     name: 暂态点火励磁电流校正系数
@@ -740,7 +892,9 @@ params:
     type: uint16
     scale: 0.01
     endian: big
-    decimal_places: 0
+    decimal_places: 2
+    range_min: 0
+    range_max: 65535
 
   - id: TM2082
     name: 阳极稳态电压加载节拍数
@@ -750,6 +904,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2083
     name: 阴极激活-点火等待时间
@@ -759,6 +915,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2084
     name: 版本号
@@ -768,6 +926,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2085
     name: 保留
@@ -777,6 +937,8 @@ params:
     scale: 1.0
     endian: big
     decimal_places: 0
+    range_min: 0
+    range_max: 65535
 
   - id: TM2086
     name: 保留

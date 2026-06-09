@@ -1,5 +1,3 @@
-# PPCU Telemetry Enum Definitions
-# Auto-generated from Excel
 enums:
   tm1_tm1005:
     0: 待机模式
@@ -174,6 +172,9 @@ enums:
   tm2_tm2042:
     0: 二次点火
     1: 正常点火
+  tm2_tm2044:
+    0: 正常
+    1: 异常
   tm2_tm2045:
     0: 关
     1: 开
