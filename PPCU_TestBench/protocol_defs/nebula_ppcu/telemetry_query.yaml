@@ -1,4 +1,5 @@
 tm_type: query
+description: 查询包 参数表
 params:
 
   - id: TM3001
