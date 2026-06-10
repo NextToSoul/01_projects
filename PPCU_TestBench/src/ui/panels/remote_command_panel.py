@@ -20,17 +20,12 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QSizePolicy,
-    QToolButton,
     QVBoxLayout,
     QWidget,
 )
 
 from src.protocol.checksum import compute_checksum
-from src.protocol.remote_command_loader import (
-    RemoteCommandDef,
-    group_commands,
-    load_remote_commands,
-)
+from src.protocol.remote_command_loader import RemoteCommandDef, load_remote_commands
 
 # 配置表路径
 _CONFIG_PATH = Path(__file__).resolve().parent.parent.parent.parent.parent / "项目文档" / "通讯协议" / "excel版遥测大表" / "立即遥控指令配置表.xlsx"
@@ -158,7 +153,7 @@ class RemoteCommandPanel(QWidget):
         self._rebuild_list()
 
     def _rebuild_list(self, filter_text: str = "") -> None:
-        """重建指令列表（带过滤）。"""
+        """按 Excel 顺序展示指令列表（带过滤）。"""
         # 清除旧内容
         while self._list_layout.count() > 0:
             item = self._list_layout.takeAt(0)
@@ -166,60 +161,23 @@ class RemoteCommandPanel(QWidget):
                 item.widget().deleteLater()
 
         filter_text = filter_text.strip().lower()
-        groups = group_commands(self._commands)
 
-        for gname in sorted(groups.keys()):
-            cmds = groups[gname]
-            # 过滤
-            if filter_text:
-                cmds = [c for c in cmds if filter_text in c.name.lower() or filter_text in c.id.lower()]
-                if not cmds:
-                    continue
+        for cmd in self._commands:
+            if filter_text and filter_text not in cmd.name.lower() and filter_text not in cmd.id.lower():
+                continue
 
-            # 组标题
-            toggle = QToolButton()
-            toggle.setText(f"▶ {gname} ({len(cmds)})")
-            toggle.setCheckable(True)
-            toggle.setChecked(self._group_expanded.get(gname, True))
-            toggle.setStyleSheet(
-                "QToolButton { border: none; font-weight: bold; padding: 4px 0; text-align: left; }"
-                "QToolButton::menu-indicator { image: none; }"
-            )
-            toggle.toggled.connect(lambda checked, gn=gname: self._toggle_group(gn, checked))
-            self._list_layout.addWidget(toggle)
-            self._group_toggles[gname] = toggle
-
-            # 子指令容器
-            container = QWidget()
-            cl = QVBoxLayout(container)
-            cl.setContentsMargins(12, 0, 0, 0)
-            cl.setSpacing(2)
-
-            for cmd in cmds:
-                btn = QPushButton(f"{cmd.name}")
-                btn.setToolTip(f"{cmd.id}\n指令码: {cmd.cmd_id:04X}\n参数: {cmd.params.hex(' ').upper() if cmd.params else '(无)'}")
-                btn.setFixedHeight(28)
-                btn.setCursor(Qt.PointingHandCursor)
-                btn.clicked.connect(lambda checked, c=cmd: self._select_command(c))
-                cl.addWidget(btn)
-
-            cl.addStretch()
-            self._list_layout.addWidget(container)
-            self._group_widgets[gname] = container
-            self._group_expanded.setdefault(gname, True)
-            container.setVisible(self._group_expanded[gname])
+            label = cmd.id + "  " + cmd.name
+            btn = QPushButton(label)
+            tip = "指令码: {:04X}".format(cmd.cmd_id)
+            if cmd.params:
+                tip += "\n参数: " + cmd.params.hex(" ").upper()
+            btn.setToolTip(tip)
+            btn.setFixedHeight(26)
+            btn.setCursor(Qt.PointingHandCursor)
+            btn.clicked.connect(lambda checked, c=cmd: self._select_command(c))
+            self._list_layout.addWidget(btn)
 
         self._list_layout.addStretch()
-
-    def _toggle_group(self, gname: str, expanded: bool) -> None:
-        self._group_expanded[gname] = expanded
-        w = self._group_widgets.get(gname)
-        if w:
-            w.setVisible(expanded)
-        toggle = self._group_toggles.get(gname)
-        if toggle:
-            toggle.setText(f"{'▼' if expanded else '▶'} {gname}")
-
     def _on_search(self, text: str) -> None:
         self._rebuild_list(text)
 
